@@ -18,6 +18,7 @@ import os
 
 from src.hamt.config import HAMTConfig
 from src.hamt.model import HAMTModel
+from src.hamt.utils import count_parameters
 
 # Import wandb if available
 try:
@@ -244,7 +245,8 @@ class GPUTrainer:
         print("\n" + "="*80)
         print("🚀 Starting Training")
         print("="*80)
-        print(f"Model parameters: {self.model.count_parameters():,}")
+        param_count = sum(p.numel() for p in self.model.parameters())
+        print(f"Model parameters: {param_count:,}")
         print(f"Training samples: {len(train_loader.dataset):,}")
         print(f"Batch size: {self.args.batch_size}")
         print(f"Epochs: {self.args.num_epochs}")
@@ -361,7 +363,8 @@ def create_model(args):
     )
     
     model = HAMTModel(config)
-    print(f"\n✅ Created HAMT model: {model.count_parameters():,} parameters")
+    param_count = sum(p.numel() for p in model.parameters())
+    print(f"\n✅ Created HAMT model: {param_count:,} parameters")
     
     return model, config
 
