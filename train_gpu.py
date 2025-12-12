@@ -4,7 +4,7 @@ Production-ready training with all optimizations enabled
 """
 
 import torch
-from torch.cuda.amp import autocast, GradScaler
+from torch.amp import autocast, GradScaler
 import torch.nn as nn
 from torch.utils.data import DataLoader, Dataset
 import time
@@ -74,7 +74,7 @@ class GPUTrainer:
         # Mixed precision
         self.use_amp = args.mixed_precision and torch.cuda.is_available()
         if self.use_amp:
-            self.scaler = GradScaler()
+            self.scaler = GradScaler('cuda')
             print(f"✅ Mixed precision enabled (dtype: {args.mixed_precision})")
         
         # Gradient checkpointing for memory efficiency
@@ -136,7 +136,7 @@ class GPUTrainer:
             
             # Forward pass with mixed precision
             if self.use_amp:
-                with autocast(dtype=torch.float16 if self.args.mixed_precision == 'fp16' else torch.bfloat16):
+                with autocast('cuda', dtype=torch.float16 if self.args.mixed_precision == 'fp16' else torch.bfloat16):
                     outputs = self.model(input_ids, labels=input_ids)
                     loss = outputs['loss']
                     aux_loss = outputs.get('auxiliary_loss', torch.tensor(0.0))
@@ -203,7 +203,7 @@ class GPUTrainer:
             input_ids = batch['input_ids'].to(self.device)
             
             if self.use_amp:
-                with autocast(dtype=torch.float16 if self.args.mixed_precision == 'fp16' else torch.bfloat16):
+                with autocast('cuda', dtype=torch.float16 if self.args.mixed_precision == 'fp16' else torch.bfloat16):
                     outputs = self.model(input_ids, labels=input_ids)
                     loss = outputs['loss']
             else:
