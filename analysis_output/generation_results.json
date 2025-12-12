@@ -1,0 +1,22 @@
+[
+  {
+    "prompt": "The quick brown fox",
+    "generated": "The quick brown fox functions to focus",
+    "length": 19
+  },
+  {
+    "prompt": "Machine learning is",
+    "generated": "Machine learning is transforming",
+    "length": 18
+  },
+  {
+    "prompt": "In the beginning",
+    "generated": "In the beginning models models offer",
+    "length": 18
+  },
+  {
+    "prompt": "Once upon a time",
+    "generated": "Once upon a time on",
+    "length": 19
+  }
+]

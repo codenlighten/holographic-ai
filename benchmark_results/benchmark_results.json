@@ -1,0 +1,32 @@
+[
+  {
+    "model_name": "HAMT",
+    "seq_length": 64,
+    "batch_size": 2,
+    "forward_time_ms": 226.14245919830864,
+    "backward_time_ms": 1336.1155474020052,
+    "memory_mb": 86.10366821289062,
+    "throughput": 81.93268938883242,
+    "parameters_m": 22.57156
+  },
+  {
+    "model_name": "HAMT",
+    "seq_length": 128,
+    "batch_size": 2,
+    "forward_time_ms": 396.97303639841266,
+    "backward_time_ms": 3142.4311423979816,
+    "memory_mb": 86.10366821289062,
+    "throughput": 72.32855787808191,
+    "parameters_m": 22.57156
+  },
+  {
+    "model_name": "HAMT",
+    "seq_length": 256,
+    "batch_size": 2,
+    "forward_time_ms": 1002.920009198715,
+    "backward_time_ms": 6334.489381199819,
+    "memory_mb": 86.10366821289062,
+    "throughput": 69.7793966178287,
+    "parameters_m": 22.57156
+  }
+]

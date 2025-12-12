@@ -1,0 +1,35 @@
+# Model configuration
+hidden_dim: 512
+hcm_dim: 2048
+num_layers: 8
+num_slots: 8
+binding_type: "elementwise"  # or "circular_conv"
+
+# Memory settings
+use_hierarchical_memory: false
+decay_rate: 0.0001
+normalization_type: "rms"
+
+# Training
+batch_size: 16
+max_length: 512
+num_epochs: 20
+learning_rate: 0.0003
+weight_decay: 0.01
+dropout: 0.1
+bptt_horizon: 256
+gradient_clip_norm: 1.0
+
+# Auxiliary loss
+use_auxiliary_loss: true
+aux_loss_weight: 0.05
+
+# Data
+dataset: "wikitext"
+dataset_config: "wikitext-2-raw-v1"
+vocab_size: 50257  # GPT-2 tokenizer
+
+# Logging
+log_interval: 100
+save_interval: 1000
+output_dir: "./checkpoints"
