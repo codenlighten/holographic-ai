@@ -20,7 +20,8 @@ build/
 
 # Jupyter
 .ipynb_checkpoints/
-*.ipynb
+# Keep notebooks for Colab deployment
+# *.ipynb
 
 # Data and models
 data/
